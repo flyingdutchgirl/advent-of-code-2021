@@ -2,29 +2,37 @@ package commons;
 
 import tasks.day1.Depths;
 import tasks.day1.SumOfDepths;
+import tasks.day2.AimedSubmarineSteering;
+import tasks.day2.SubmarineSteering;
+import tasks.day3.LifeSupportRating;
+import tasks.day3.PowerConsumption;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 public class TestAll {
 
-    private static final List<AocTask> allTasks =
+    private final List<AocTask> allTasks =
             List.of(
                     // day 1
                     new Depths(),
-                    new SumOfDepths()
+                    new SumOfDepths(),
 
                     // day 2
-                    // ...
+                    new SubmarineSteering(),
+                    new AimedSubmarineSteering(),
+
+                    // day 3
+                    new PowerConsumption(),
+                    new LifeSupportRating()
             );
 
 
     public static void main(String[] args) {
-        testAll();
+        new TestAll().testAll();
     }
 
-    static void testAll() {
+    void testAll() {
         allTasks.stream()
                 .sorted(Comparator.comparingInt(AocTask::getNumberOfDay).thenComparing(AocTask::getStage))
                 .forEachOrdered(TaskUtils::checkAssertions);

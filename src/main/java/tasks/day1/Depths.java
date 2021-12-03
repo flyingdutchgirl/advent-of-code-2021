@@ -15,7 +15,7 @@ public class Depths extends AocTask {
         setCorrectAnswer(1532);
     }
 
-    public Depths(int numberOfDay) {
+    protected Depths(int numberOfDay) {
         super(numberOfDay);
     }
 
@@ -32,7 +32,7 @@ public class Depths extends AocTask {
     }
 
 
-    protected int ascendingCounter(int[] arr) {
+    protected static int ascendingCounter(int[] arr) {
         int counter = 0;
 
         for (int i = 1; i < arr.length; i++) {

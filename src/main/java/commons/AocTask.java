@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public abstract class AocTask {
 
-    private int numberOfDay;
+    private final int numberOfDay;
     private int stage = 1;
     private Optional<Long> expected = Optional.empty();
 
@@ -33,11 +33,11 @@ public abstract class AocTask {
         return expected;
     }
 
-    public void setStage(int stage) {
+    protected void setStage(int stage) {
         this.stage = stage;
     }
 
-    public void setCorrectAnswer(long val) {
+    protected void setCorrectAnswer(long val) {
         expected = Optional.of(val);
     }
 }
