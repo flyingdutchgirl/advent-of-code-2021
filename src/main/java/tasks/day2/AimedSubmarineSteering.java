@@ -17,27 +17,27 @@ public class AimedSubmarineSteering extends SubmarineSteering {
 
     @Override
     protected long parse(List<String> directions) {
-            int horizontal = 0;
-            int depth = 0;
-            int aim = 0;
+        int horizontal = 0;
+        int depth = 0;
+        int aim = 0;
 
-            for (String dir : directions) {
-                var tokens = dir.split("\\s+");
-                assert tokens.length == 2;
-                String type = tokens[0].toLowerCase();
-                int x = Integer.parseInt(tokens[1]);
+        for (String dir : directions) {
+            var tokens = dir.split("\\s+");
+            assert tokens.length == 2;
+            String type = tokens[0].toLowerCase();
+            int x = Integer.parseInt(tokens[1]);
 
-                switch (type) {
-                    case "forward" -> {
-                        horizontal += x;
-                        depth += (aim * x);
-                    }
-                    case "up" -> aim -= x;
-                    case "down" -> aim += x;
-                    default -> throw new IllegalArgumentException(String.format("Can't resolve command '%s'!", type));
+            switch (type) {
+                case "forward" -> {
+                    horizontal += x;
+                    depth += (aim * x);
                 }
-
+                case "up" -> aim -= x;
+                case "down" -> aim += x;
+                default -> throw new IllegalArgumentException(String.format("Can't resolve command '%s'!", type));
             }
-            return (long) horizontal * depth;
+
+        }
+        return (long) horizontal * depth;
     }
 }

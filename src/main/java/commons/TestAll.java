@@ -6,11 +6,18 @@ import tasks.day2.AimedSubmarineSteering;
 import tasks.day2.SubmarineSteering;
 import tasks.day3.LifeSupportRating;
 import tasks.day3.PowerConsumption;
+import tasks.day4.BingoLosing;
+import tasks.day4.BingoRunner;
 
 import java.util.Comparator;
 import java.util.List;
 
 public class TestAll {
+
+    public static void main(String[] args) {
+        new TestAll().testAll();
+    }
+
 
     private final List<AocTask> allTasks =
             List.of(
@@ -24,20 +31,21 @@ public class TestAll {
 
                     // day 3
                     new PowerConsumption(),
-                    new LifeSupportRating()
+                    new LifeSupportRating(),
+
+                    // day 4
+                    new BingoRunner(),
+                    new BingoLosing()
+
+                    // day 5
             );
 
-
-    public static void main(String[] args) {
-        new TestAll().testAll();
-    }
 
     void testAll() {
         allTasks.stream()
                 .sorted(Comparator.comparingInt(AocTask::getNumberOfDay).thenComparing(AocTask::getStage))
                 .forEachOrdered(TaskUtils::checkAssertions);
     }
-
 
 
 }

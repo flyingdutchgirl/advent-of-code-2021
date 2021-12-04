@@ -40,4 +40,8 @@ public abstract class AocTask {
     protected void setCorrectAnswer(long val) {
         expected = Optional.of(val);
     }
+
+    protected void removeCorrectAnswer() {
+        expected = Optional.empty();
+    }
 }

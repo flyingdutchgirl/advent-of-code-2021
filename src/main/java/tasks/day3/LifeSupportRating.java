@@ -38,20 +38,20 @@ public class LifeSupportRating extends PowerConsumption {
 
     private static int applyBitCriteria(List<String> lines,
                                         Function<List<String>, String> rateGenerator) {
-        String rate = rateGenerator.apply(lines);
+        String rate;
         final int len = lines.get(0).length();
         List<String> tempList = new ArrayList<>(lines);
 
         for (int i = 0; i < len && tempList.size() > 1; i++) {
+            rate = rateGenerator.apply(tempList);
             char req = rate.charAt(i);
             Iterator<String> iter = tempList.iterator();
+
             while (iter.hasNext()) {
                 String line = iter.next();
                 if (line.charAt(i) != req) {
                     iter.remove();
                 }
-
-                rate = rateGenerator.apply(tempList);
             }
         }
 

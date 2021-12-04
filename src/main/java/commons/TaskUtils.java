@@ -13,7 +13,8 @@ public class TaskUtils {
     private static final Pattern NEWLINE_PATTERN
             = Pattern.compile("\n");
     //    static final String FILEPATH_TEMPLATE = "src/inputs/input%d.txt";
-    static final String FILEPATH_TEMPLATE = "src/main/java/inputs/input%d.txt";
+//    static final String FILEPATH_TEMPLATE = "src/main/java/inputs/input%d.txt";
+    static final String FILEPATH_TEMPLATE = "src/main/resources/inputs/input%d.txt";
 
 
     public static Stream<String> lines(Scanner scanner) {
