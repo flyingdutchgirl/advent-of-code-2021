@@ -8,6 +8,8 @@ import tasks.day3.LifeSupportRating;
 import tasks.day3.PowerConsumption;
 import tasks.day4.BingoLosing;
 import tasks.day4.BingoRunner;
+import tasks.day5.HydrothermalDiagonals;
+import tasks.day5.HydrothermalRoute;
 
 import java.util.Comparator;
 import java.util.List;
@@ -35,9 +37,11 @@ public class TestAll {
 
                     // day 4
                     new BingoRunner(),
-                    new BingoLosing()
+                    new BingoLosing(),
 
                     // day 5
+                    new HydrothermalRoute(),
+                    new HydrothermalDiagonals()
             );
 
 
