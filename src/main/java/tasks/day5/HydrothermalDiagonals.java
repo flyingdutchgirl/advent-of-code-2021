@@ -21,17 +21,20 @@ public class HydrothermalDiagonals extends HydrothermalRoute {
 
     @Override
     public long getAnswer(Scanner scanner) {
+
+        // takes and parses input; inits map of points;
+        // computes horizontals and verticals
         super.getAnswer(scanner);
 
+        // only diagonal lines
         var filtered = lines.stream()
                 .filter(line -> {
                     var start = line.fst();
                     var end = line.snd();
-                    boolean check1 = Math.abs(start.fst() - end.fst()) == Math.abs(start.snd() - end.snd());
-                    boolean check2 = Math.abs(start.fst() - end.fst()) > 0;
-                    return check1 && check2;
+                    return Math.abs(start.fst() - end.fst()) == Math.abs(start.snd() - end.snd());
                 }).collect(Collectors.toList());
 
+        // computes diagonals
         updateMap(filtered);
 
         long answer = map.values().stream()

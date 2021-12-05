@@ -3,18 +3,15 @@ package tasks.day5;
 import commons.AocTask;
 import commons.TaskUtils;
 import utils.containers.BiPair;
-import utils.containers.Pair;
 
 import java.util.*;
-import java.util.function.BiPredicate;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class HydrothermalRoute extends AocTask {
 
-    private int[][] grid;
-    Map<BiPair<Integer>, Integer> map;
-    List<BiPair<BiPair<Integer>>> lines;
+    protected Map<BiPair<Integer>, Integer> map;
+    protected List<BiPair<BiPair<Integer>>> lines;
 
     public HydrothermalRoute() {
         super(5);
@@ -28,10 +25,10 @@ public class HydrothermalRoute extends AocTask {
     @Override
     public long getAnswer(Scanner scanner) {
         lines = TaskUtils.lines(scanner)
-                .map(this::parseLine)
+                .map(HydrothermalRoute::parseLine)
                 .collect(Collectors.toList());
 
-        prepareGrid(lines);
+        fillMap(lines);
 
         long answer = map.values().stream()
                 .filter(i -> i > 1)
@@ -40,7 +37,7 @@ public class HydrothermalRoute extends AocTask {
         return answer;
     }
 
-    BiPair<BiPair<Integer>> parseLine(String line) {
+    private static BiPair<BiPair<Integer>> parseLine(String line) {
         int[] coordinates = Arrays.stream(line.split("\\D+"))
                 .mapToInt(Integer::parseInt)
                 .toArray();
@@ -52,13 +49,13 @@ public class HydrothermalRoute extends AocTask {
     }
 
 
-    void prepareGrid(List<BiPair<BiPair<Integer>>> pairs) {
+    private void fillMap(List<BiPair<BiPair<Integer>>> pairs) {
         map = new HashMap<>();
 
         var filteredList = pairs.stream()
                 .filter(line -> {
-                    var p1 = line.fst();
-                    var p2 = line.snd();
+                    var p1 = line.fst(); // start of the path
+                    var p2 = line.snd(); // end of the path
                     return Objects.equals(p1.fst(), p2.fst()) || Objects.equals(p1.snd(), p2.snd());
                 }).collect(Collectors.toList());
 
