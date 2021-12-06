@@ -10,6 +10,8 @@ import tasks.day4.BingoLosing;
 import tasks.day4.BingoRunner;
 import tasks.day5.HydrothermalDiagonals;
 import tasks.day5.HydrothermalRoute;
+import tasks.day6.FishPopulation;
+import tasks.day6.HugeFishPopulation;
 
 import java.util.Comparator;
 import java.util.List;
@@ -41,7 +43,11 @@ public class TestAll {
 
                     // day 5
                     new HydrothermalRoute(),
-                    new HydrothermalDiagonals()
+                    new HydrothermalDiagonals(),
+
+                    //day 6
+                    new FishPopulation(),
+                    new HugeFishPopulation()
             );
 
 
