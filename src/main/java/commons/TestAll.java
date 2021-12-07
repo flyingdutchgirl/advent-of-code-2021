@@ -12,6 +12,8 @@ import tasks.day5.HydrothermalDiagonals;
 import tasks.day5.HydrothermalRoute;
 import tasks.day6.FishPopulation;
 import tasks.day6.HugeFishPopulation;
+import tasks.day7.CrabCommonPoint;
+import tasks.day7.OptimalCommonPoint;
 
 import java.util.Comparator;
 import java.util.List;
@@ -47,7 +49,11 @@ public class TestAll {
 
                     //day 6
                     new FishPopulation(),
-                    new HugeFishPopulation()
+                    new HugeFishPopulation(),
+
+                    // day 7
+                    new OptimalCommonPoint(),
+                    new CrabCommonPoint()
             );
 
 
