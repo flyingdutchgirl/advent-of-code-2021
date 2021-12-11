@@ -21,27 +21,17 @@ public class Permutations {
             var levelTwo = new ArrayList<List<T>>();
             levelTwo.add(levelOne);
             return levelTwo;
-//            return List.of(List.of(elements.get(0)));
         }
 
-//        final int initLen = elements.size() - 1;
-
-        var listList = elements.stream()
+        return elements.stream()
                 .map(elem -> {
                     List<T> newList = new ArrayList<>(elements);
                     newList.remove(elem);
                     var recursive = permutation(newList);
-                    var perms = recursive.stream()
-                            .map(list -> {
-                                list.add(0, elem);
-                                return list;
-                            })
-                            .collect(Collectors.toList());
-                    return new ArrayList<>(perms);
-                }).flatMap(Collection::stream)
-                .collect(Collectors.toList());
-
-        return new ArrayList<>(listList);
+                    return recursive.stream()
+                            .peek(list -> list.add(0, elem))
+                            .collect(Collectors.toCollection(ArrayList::new));
+                }).flatMap(Collection::stream).collect(Collectors.toList());
     }
 
 

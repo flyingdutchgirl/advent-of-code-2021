@@ -75,4 +75,14 @@ public class TaskUtils {
         return String.format(FILEPATH_TEMPLATE, numberOfDay);
     }
 
+    public static long countTime(AocTask task) {
+        long start = System.currentTimeMillis();
+        checkAssertions(task);
+        long end = System.currentTimeMillis();
+
+        System.out.println("Execution took " + (end - start) + " ms");
+
+        return end - start;
+    }
+
 }

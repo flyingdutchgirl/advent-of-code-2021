@@ -8,11 +8,20 @@ import java.util.stream.Collectors;
 
 public class DisplayReconstruction extends Displays {
 
-    private final String PATTERN_STR = "abcdefg";
-    private final List<String> digits =
-            List.of("abcefg", "cf", "acdeg", "acdfg", "bcdf", "abdfg", "abdefg", "acf", "abcdefg", "abcdfg");
-    private final Set<String> stringSet = Set.copyOf(digits);
-    private final List<String> permutations = StringUtils.stringPermutations(PATTERN_STR);
+    private final String ALL_DIGITS = "abcdefg";
+    private final List<String> DIGITS =
+            List.of("abcefg", // 0
+                    "cf", // 1
+                    "acdeg", // 2
+                    "acdfg", // 3
+                    "bcdf", // 4
+                    "abdfg", // 5
+                    "abdefg", // 6
+                    "acf", // 7
+                    "abcdefg", // 8
+                    "abcdfg"); // 9
+    private final Set<String> DIGIT_SET = Set.copyOf(DIGITS);
+    private final List<String> ALL_PERMUTATIONS = StringUtils.stringPermutations(ALL_DIGITS);
 
 
     public DisplayReconstruction() {
@@ -21,7 +30,6 @@ public class DisplayReconstruction extends Displays {
     }
 
     public static void main(String[] args) {
-//        TaskUtils.fromConsole(new DisplayReconstruction());
         TaskUtils.checkAssertions(new DisplayReconstruction());
     }
 
@@ -45,15 +53,15 @@ public class DisplayReconstruction extends Displays {
         return Arrays.stream(parts[1].trim().split("\\s+"))
                 .map(s -> StringUtils.remapString(s, letterAlterations))
                 .map(StringUtils::sortChars)
-                .map(digits::indexOf)
+                .map(DIGITS::indexOf)
                 .map(String::valueOf)
                 .collect(Collectors.joining());
     }
 
 
     private Map<Character, Character> findCorrectRemapping(List<String> puzzleInput) {
-        var maps = permutations.stream()
-                .map(p -> StringUtils.alterationsMap(PATTERN_STR, p))
+        var maps = ALL_PERMUTATIONS.stream()
+                .map(p -> StringUtils.alterationsMap(ALL_DIGITS, p))
                 .collect(Collectors.toList());
 
         for (Map<Character, Character> map : maps) {
@@ -62,7 +70,7 @@ public class DisplayReconstruction extends Displays {
                     .map(StringUtils::sortChars)
                     .collect(Collectors.toSet());
 
-            if (this.stringSet.equals(set)) {
+            if (this.DIGIT_SET.equals(set)) {
                 return map;
             }
         }
