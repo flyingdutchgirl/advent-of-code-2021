@@ -2,6 +2,8 @@ package commons;
 
 import tasks.day1.Depths;
 import tasks.day1.SumOfDepths;
+import tasks.day10.SyntaxCheck;
+import tasks.day10.SyntaxCompletion;
 import tasks.day2.AimedSubmarineSteering;
 import tasks.day2.SubmarineSteering;
 import tasks.day3.LifeSupportRating;
@@ -14,6 +16,10 @@ import tasks.day6.FishPopulation;
 import tasks.day6.HugeFishPopulation;
 import tasks.day7.CrabCommonPoint;
 import tasks.day7.OptimalCommonPoint;
+import tasks.day8.DisplayReconstruction;
+import tasks.day8.Displays;
+import tasks.day9.Basins;
+import tasks.day9.RiskPoints;
 
 import java.util.Comparator;
 import java.util.List;
@@ -53,7 +59,19 @@ public class TestAll {
 
                     // day 7
                     new OptimalCommonPoint(),
-                    new CrabCommonPoint()
+                    new CrabCommonPoint(),
+
+                    //day 8
+                    new Displays(),
+                    new DisplayReconstruction(),
+
+                    // day 9
+                    new RiskPoints(),
+                    new Basins(),
+
+                    // day 10
+                    new SyntaxCheck(),
+                    new SyntaxCompletion()
             );
 
 

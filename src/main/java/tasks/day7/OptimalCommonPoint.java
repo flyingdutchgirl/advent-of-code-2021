@@ -2,14 +2,15 @@ package tasks.day7;
 
 import commons.AocTask;
 import commons.TaskUtils;
-import utils.MathUtils;
+
+import static utils.MathUtils.*;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class OptimalCommonPoint extends AocTask {
 
-    protected int[] ints;
+    protected int[] positions;
 
     public OptimalCommonPoint() {
         super(7);
@@ -23,13 +24,13 @@ public class OptimalCommonPoint extends AocTask {
 
     @Override
     public long getAnswer(Scanner scanner) {
-        this.ints = Arrays.stream(scanner.nextLine().split(","))
+        this.positions = Arrays.stream(scanner.nextLine().split(","))
                 .mapToInt(Integer::parseInt)
                 .toArray();
 
-        int median = MathUtils.median(ints);
+        int median = round(median(positions));
 
-        return fuel(ints, median);
+        return fuel(positions, median);
     }
 
 

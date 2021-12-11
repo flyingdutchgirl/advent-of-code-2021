@@ -1,5 +1,8 @@
 package utils.containers;
 
+import java.util.function.BiFunction;
+import java.util.function.Function;
+
 public class BiPair<T> {
 
     private T first;
@@ -15,6 +18,9 @@ public class BiPair<T> {
         return new BiPair<>(a, b);
     }
 
+    public <X, Y> BiPair<Y> combineWith(BiPair<X> anotherPair, BiFunction<T, X, Y> combiner) {
+        return BiPair.of(combiner.apply(fst(), anotherPair.fst()), combiner.apply(snd(), anotherPair.snd()));
+    }
 
     public T fst() {
         return first;

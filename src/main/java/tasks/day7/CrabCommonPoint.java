@@ -25,11 +25,11 @@ public class CrabCommonPoint extends OptimalCommonPoint {
         super.getAnswer(scanner);
 
         var stats = new IntSummaryStatistics();
-        Arrays.stream(this.ints).forEach(stats::accept);
+        Arrays.stream(this.positions).forEach(stats::accept);
 
         var mean = MathUtils.round(stats.getAverage());
 
-        return Math.min(fuel(this.ints, mean), fuel(this.ints, mean - 1));
+        return Math.min(fuel(this.positions, mean), fuel(this.positions, mean - 1));
     }
 
     @Override
