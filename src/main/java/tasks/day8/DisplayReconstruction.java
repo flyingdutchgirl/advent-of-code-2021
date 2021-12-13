@@ -22,6 +22,11 @@ public class DisplayReconstruction extends Displays {
                     "abcdfg"); // 9
     private final Set<String> DIGIT_SET = Set.copyOf(DIGITS);
     private final List<String> ALL_PERMUTATIONS = StringUtils.stringPermutations(ALL_DIGITS);
+    private final List<Map<Character, Character>> ALL_MAPPINGS =
+            ALL_PERMUTATIONS.stream()
+                    .map(p -> StringUtils.alterationsMap(ALL_DIGITS, p))
+                    .collect(Collectors.toList());
+    ;
 
 
     public DisplayReconstruction() {
@@ -60,11 +65,8 @@ public class DisplayReconstruction extends Displays {
 
 
     private Map<Character, Character> findCorrectRemapping(List<String> puzzleInput) {
-        var maps = ALL_PERMUTATIONS.stream()
-                .map(p -> StringUtils.alterationsMap(ALL_DIGITS, p))
-                .collect(Collectors.toList());
 
-        for (Map<Character, Character> map : maps) {
+        for (Map<Character, Character> map : ALL_MAPPINGS) {
             var set = puzzleInput.stream()
                     .map(s -> StringUtils.remapString(s, map))
                     .map(StringUtils::sortChars)

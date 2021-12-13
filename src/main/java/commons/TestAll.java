@@ -4,6 +4,8 @@ import tasks.day1.Depths;
 import tasks.day1.SumOfDepths;
 import tasks.day10.SyntaxCheck;
 import tasks.day10.SyntaxCompletion;
+import tasks.day13.DotsManual;
+import tasks.day13.DotsToLetters;
 import tasks.day2.AimedSubmarineSteering;
 import tasks.day2.SubmarineSteering;
 import tasks.day3.LifeSupportRating;
@@ -71,7 +73,15 @@ public class TestAll {
 
                     // day 10
                     new SyntaxCheck(),
-                    new SyntaxCompletion()
+                    new SyntaxCompletion(),
+
+                    //day 11
+
+                    // day 12
+
+                    // day 13
+                    new DotsManual(),
+                    new DotsToLetters()
             );
 
 
